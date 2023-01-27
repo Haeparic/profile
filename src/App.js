@@ -1,3 +1,5 @@
+import { Route } from "react-router-dom";
+
 // common
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
@@ -11,8 +13,6 @@ import Gallery from "./components/sub/Gallery";
 import Join from "./components/sub/Join";
 import Location from "./components/sub/Location";
 import Youtube from "./components/sub/Youtube";
-
-import { Route } from "react-router-dom";
 
 function App() {
   return (
@@ -39,9 +39,9 @@ function App() {
       <Route path="/department" component={Department} />
       <Route path="/community" component={Community} />
       <Route path="/gallery" component={Gallery} />
-      <Route path="/join" component={Join} />
-      <Route path="/location" component={Location} />
       <Route path="/youtube" component={Youtube} />
+      <Route path="/location" component={Location} />
+      <Route path="/join" component={Join} />
       
       <Footer />
     </>
