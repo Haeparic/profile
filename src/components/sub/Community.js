@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Layout from "../common/Layout";
+import CommunityCard from "./CommunityCard";
 
 const Community = () => {
   // 데모용 데이터 생성
@@ -41,7 +42,6 @@ const Community = () => {
     ]);
     // 입력 저장 후 초기화
     resetPost();
-    alert("제목과 본문을 입력하세요.");
 
     // 연속으로 setState 를 진행하면 1번만 된다
     // 연속으로 setState 를 진행하면 prev 콜백함수를 활용
@@ -169,49 +169,17 @@ const Community = () => {
             // 중복되지 않는 key 를 만들어주는 라이브러리
             // 그러나 기본은 가능하면 본인이 key 를 관리
             return (
-              <article key={index}>
-                {item.enableUpdate ? (
-                  // 업데이트일때 보여줄 JSX
-                  <>
-                    <div className="txt">
-                      <input
-                        type="text"
-                        defaultValue={item.title}
-                        placeholder="제목을 입력하세요."
-                        ref={inputEdit}
-                      />
-                      <br />
-                      <textarea
-                        cols="30"
-                        rows="5"
-                        defaultValue={item.content}
-                        placeholder="내용을 입력해주세요."
-                        ref={textareaEdit}
-                      ></textarea>
-                    </div>
-                    <div className="btnSet">
-                      {/* 업데이트 취소 */}
-                      <button onClick={() => disableUpdate(index)}>
-                        CANCEL
-                      </button>
-                      {/* 내용 업데이트 */}
-                      <button onClick={() => updatePost(index)}>SAVE</button>
-                    </div>
-                  </>
-                ) : (
-                  // 목록일때 보여줄 JSX
-                  <>
-                    <div className="txt">
-                      <h2>{item.title}</h2>
-                      <p>{item.content}</p>
-                    </div>
-                    <div className="btnSet">
-                      <button onClick={() => enableUpdate(index)}>EDIT</button>
-                      <button onClick={() => deletePost(index)}>DELETE</button>
-                    </div>
-                  </>
-                )}
-              </article>
+              <CommunityCard
+                key={index}
+                item={item}
+                index={index}
+                inputEdit={inputEdit}
+                textareaEdit={textareaEdit}
+                disableUpdate={disableUpdate}
+                updatePost={updatePost}
+                enableUpdate={enableUpdate}
+                deletePost={deletePost}
+              />
             );
           })
         }
