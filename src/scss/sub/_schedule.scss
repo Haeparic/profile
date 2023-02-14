@@ -1,0 +1,16 @@
+.Schedule {
+  figure {
+    background: lightgray;
+  }
+  .react-calendar {
+    width: 100%;
+  }
+  .react-calendar__tile--now {
+    background: lightgray;
+  }
+  .react-calendar__tile--now:enabled:hover,
+  .react-calendar__tile--now:enabled:focus {
+    background: lightgray;
+    color: black;
+  }
+}
